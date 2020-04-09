@@ -1,24 +1,11 @@
+// refs.
+// https://jp.vuejs.org/v2/cookbook/using-axios-to-consume-apis.html
+// [vue-cliでaxiosを使用する(設定から使用方法まで)](https://qiita.com/right1121/items/092ac7ff747e1c47b2b1)
 <template>
   <div class="hello">
-    <article
-      v-for="(article, index) in articleList"
-      :key="index"
-      class="box media">
-      <figure class="media-left">
-        <p class="image is-64x64">
-          <img :src="article.user.profile_image_url">
-        </p>
-      </figure>
-      <div class="media-content">
-        <div class="content">
-          <p>
-            <strong><nuxt-link :to="article.url">{{ article.title}}</nuxt-link></strong> <br>
-            {{ article.user.id }}<br>
-            <small>Like · {{ article.likes_count }}</small>
-          </p>
-        </div>
-      </div>
-    </article>
+    <h1>hello!</h1>
+    <div>{{ info }}</div>
+    <input @click="getReq" type="button" value="click" />
   </div>
 </template>
 
@@ -30,15 +17,26 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      info: null,
     }
-  }
+  },
+  methods: {
+    getReq() {
+      this.axios
+        // .get('https://qiita.com/api/v2/' + 'items?page=1&per_page=4')
+        .get('https://api.coindesk.com/v1/bpi/currentprice.json')
+        .then((response) => {
+          this.info = response;
+        });
+    },
+  },
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
+h1,
+h2 {
   font-weight: normal;
 }
 ul {
