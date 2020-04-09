@@ -1,3 +1,17 @@
+.DS_Store
+/dist/
+/test/unit/coverage/
+/test/e2e/reports/
+selenium-debug.log
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
 # Logs
 logs
 *.log
@@ -102,3 +116,4 @@ dist
 
 # TernJS port file
 .tern-port
+
